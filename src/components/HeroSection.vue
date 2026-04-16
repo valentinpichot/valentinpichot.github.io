@@ -27,6 +27,7 @@ export default defineComponent({
       const mask = this.$refs.mask as HTMLElement;
       const content = this.$refs.content as HTMLElement;
       const signature = this.$refs.signature as HTMLElement;
+      const video = this.$refs.video as HTMLElement;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -41,9 +42,9 @@ export default defineComponent({
 
       // Phase 1: Reveal & Bloom
       tl.to(signature, {
-        scale: 1.1,
+        scale: 1.05,
         duration: 0.5,
-        ease: 'power1.inOut'
+        ease: 'linear'
       })
         // Phase 2: The Portal Zoom
         .to(signature, {
@@ -52,6 +53,13 @@ export default defineComponent({
           duration: 2,
           ease: 'power2.in'
         }, 0.5)
+        .to(video, {
+          width: '100%',
+          height: '100%',
+          transform: 'translate(0%, 0%)',
+          duration: 1.0,
+          ease: 'power2.inOut'
+        }, 1.3) // Ends at 2.5, matching the signature zoom-through finish
         .to(mask, {
           backgroundColor: 'rgba(250, 249, 246, 0)', // Seamlessly fade to transparent
           duration: 1,
@@ -71,7 +79,7 @@ export default defineComponent({
   <section ref="hero" class="hero">
     <div class="video-background">
       <div class="video-overlay"></div>
-      <video autoplay muted loop playsinline class="bg-video">
+      <video ref="video" autoplay muted loop playsinline class="bg-video">
         <source src="https://cdn.pixabay.com/video/2020/04/28/37426-414024578_large.mp4" type="video/mp4">
       </video>
     </div>
@@ -79,7 +87,7 @@ export default defineComponent({
     <div ref="mask" class="text-mask-container">
       <div ref="signature" class="signature-wrapper">
         <span class="name">Aube</span>
-        <span class="ampersand">&</span>
+        <span class="ampersand">et</span>
         <span class="name">Valentin</span>
       </div>
     </div>
@@ -120,6 +128,7 @@ export default defineComponent({
   transform: translate(50%, 50%);
   object-fit: cover;
   filter: sepia(0.1) brightness(0.9) contrast(1.1);
+  will-change: width, height, transform;
 }
 
 .video-overlay {
@@ -148,6 +157,7 @@ export default defineComponent({
 
 .signature-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 30px;
   color: #000;
@@ -156,15 +166,14 @@ export default defineComponent({
 
 .name {
   font-family: var(--font-signature);
-  font-size: 12vw;
+  font-size: 8vw;
   line-height: 1;
   white-space: nowrap;
 }
 
 .ampersand {
   font-family: var(--font-signature);
-  font-size: 8vw;
-  color: var(--color-dusty-rose);
+  font-size: 6vw;
   /* Note: mix-blend-mode: multiply will darken this */
   margin-top: 20px;
 }
