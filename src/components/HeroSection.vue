@@ -80,7 +80,7 @@ export default defineComponent({
     <div class="video-background">
       <div class="video-overlay"></div>
       <video ref="video" autoplay muted loop playsinline class="bg-video">
-        <source src="https://cdn.pixabay.com/video/2020/04/28/37426-414024578_large.mp4" type="video/mp4">
+        <source src="/src/assets/video/face1.mp4" type="video/mp4">
       </video>
     </div>
 
@@ -93,10 +93,20 @@ export default defineComponent({
     </div>
 
     <div ref="content" class="hero-content">
-      <p class="hero-subtitle">Une Histoire, Un Destin</p>
-      <div class="scroll-indicator">
-        <div class="line"></div>
-        <span>DÉCOUVRIR</span>
+      <p class="hero-subtitle">11 Avril 2026</p>
+      <div class="center-indicator">
+        <div class="center-line"></div>
+        <span class="scroll-text-center">DÉROULEZ POUR DÉCOUVRIR</span>
+      </div>
+    </div>
+
+    <div class="mouse-fixed">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <div class="arrows">
+        <span class="arrow-down"></span>
+        <span class="arrow-down"></span>
       </div>
     </div>
   </section>
@@ -166,14 +176,14 @@ export default defineComponent({
 
 .name {
   font-family: var(--font-signature);
-  font-size: 8vw;
+  font-size: 6vw;
   line-height: 1;
   white-space: nowrap;
 }
 
 .ampersand {
   font-family: var(--font-signature);
-  font-size: 6vw;
+  font-size: 5vw;
   /* Note: mix-blend-mode: multiply will darken this */
   margin-top: 20px;
 }
@@ -197,25 +207,122 @@ export default defineComponent({
   opacity: 0.8;
 }
 
-.scroll-indicator {
+.center-indicator {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.scroll-indicator span {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 3px;
-  opacity: 0.5;
-}
-
-.line {
-  width: 1px;
-  height: 60px;
+.center-line {
+  width: 2px;
+  height: 50px;
   background-color: var(--color-dusty-rose);
   animation: scrollLine 2.5s infinite var(--transition-smooth);
+}
+
+.scroll-text-center {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-espresso);
+}
+
+.mouse-fixed {
+  position: absolute;
+  right: 30px;
+  bottom: 50px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+}
+
+.mouse {
+  width: 30px;
+  height: 44px;
+  border: 1.5px solid var(--color-dusty-rose);
+  border-radius: 10px;
+  position: relative;
+}
+
+.wheel {
+  width: 2px;
+  height: 6px;
+  background-color: var(--color-dusty-rose);
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite ease-in-out;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mouse-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mouse {
+  width: 18px;
+  height: 30px;
+  border: 1.5px solid var(--color-dusty-rose);
+  border-radius: 10px;
+  position: relative;
+}
+
+.wheel {
+  width: 2px;
+  height: 5px;
+  background-color: var(--color-dusty-rose);
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite ease-in-out;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow-down {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-bottom: 1.5px solid var(--color-dusty-rose);
+  border-right: 1.5px solid var(--color-dusty-rose);
+  transform: rotate(45deg);
+  margin: -1px;
+  animation: arrowFade 2s infinite;
+}
+
+.arrow-down:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scroll-text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+  font-weight: 500;
+  color: var(--color-espresso);
 }
 
 @keyframes scrollLine {
@@ -237,6 +344,60 @@ export default defineComponent({
   100% {
     transform: scaleY(0);
     transform-origin: bottom;
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes scrollWheel {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, 10px);
+    opacity: 0;
+  }
+}
+
+@keyframes arrowFade {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-2px, -2px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(2px, 2px);
   }
 }
 

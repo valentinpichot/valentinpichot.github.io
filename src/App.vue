@@ -9,6 +9,7 @@ import HeroSection from './components/HeroSection.vue';
 import PhotoPortal from './components/PhotoPortal.vue';
 import VideoPortal from './components/VideoPortal.vue';
 import InteractiveTimeline from './components/InteractiveTimeline.vue';
+import ThankYouSection from './components/ThankYouSection.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,7 @@ export default defineComponent({
     PhotoPortal,
     VideoPortal,
     InteractiveTimeline,
+    ThankYouSection,
   },
   data() {
     return {
@@ -38,7 +40,7 @@ export default defineComponent({
   methods: {
     initLenis() {
       this.lenis = new Lenis({
-        duration: 1.5, // Dream-like slower feel
+        duration: 1.3, // Dream-like slower feel
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
@@ -72,20 +74,24 @@ export default defineComponent({
   <div id="app-container">
     <div id="grain"></div>
     <CustomCursor />
-    
+
     <main>
       <HeroSection />
-      
+
       <div class="portals-container">
         <PhotoPortal />
         <VideoPortal />
       </div>
 
       <InteractiveTimeline />
-      
+
+      <ThankYouSection />
+
       <section class="footer-spacer section-padding">
         <div class="container">
           <p class="font-serif" style="text-align: center; opacity: 0.5;">Fait avec amour pour un jour inoubliable.</p>
+          <p class="font-serif" style="text-align: center; opacity: 0.5;">A suivre...</p>
+          <a href=""></a>
         </div>
       </section>
     </main>

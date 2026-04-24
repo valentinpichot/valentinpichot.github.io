@@ -3,19 +3,19 @@
 @font-face {
   font-family: 'Santorini';
   src: url('./assets/fonts/SantoriniRegular.woff') format('woff'),
-       url('./assets/fonts/SantoriniRegular.ttf') format('truetype'),
-       url('./assets/fonts/Santorini.otf') format('opentype');
+    url('./assets/fonts/SantoriniRegular.ttf') format('truetype'),
+    url('./assets/fonts/Santorini.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --color-linen: #FAF9F6;
+  --color-linen: #eae7df;
   --color-dusty-rose: #DCAE96;
   --color-espresso: #3B2F2F;
   --color-sable: #F2E8DF;
   --color-black: #1A1A1A;
-  
+
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Inter', sans-serif;
   --font-signature: 'Santorini', cursive;
@@ -38,7 +38,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, .font-serif {
+h1,
+h2,
+h3,
+h4,
+.font-serif {
   font-family: var(--font-serif);
   font-weight: 400;
 }

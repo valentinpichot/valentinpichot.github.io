@@ -9,10 +9,14 @@ export default defineComponent({
       isCinemaOpen: false,
       cinemaUrl: 'https://www.youtube.com/embed/x5AXm0apTjA?autoplay=1&rel=0&modestbranding=1',
       videos: [
-        { title: 'La Préparation', url: 'https://cdn.pixabay.com/video/2024/03/20/204803-925552205_large.mp4' },
-        { title: 'La Cérémonie', url: 'https://cdn.pixabay.com/video/2022/10/23/136139-764371523_large.mp4' },
-        { title: 'Le Baiser', url: 'https://cdn.pixabay.com/video/2019/11/22/29338-374868363_large.mp4' },
-        { title: 'La Fête', url: 'https://cdn.pixabay.com/video/2019/07/23/25445-350293424_large.mp4' },
+        { title: `L'arrivée en voiture`, url: 'src/assets/voiture1.jpg' },
+        { title: 'La descente', url: 'src/assets/arrivee2.jpg' },
+        { title: 'La montée des marches', url: 'src/assets/val1.jpg' },
+        { title: `L'arrivée à la mairie`, url: 'src/assets/auby1.jpg' },
+        { title: 'Les sourires', url: 'src/assets/mairie3.jpg' },
+        { title: 'Les bagues', url: 'src/assets/bague2.jpg' },
+        { title: 'Auby et Valou', url: 'src/assets/mairie2.jpg' },
+        { title: 'Les mariés au chateau', url: 'src/assets/marche1.jpg' },
       ]
     };
   },
@@ -25,13 +29,13 @@ export default defineComponent({
       const strip = this.$refs.strip as HTMLElement;
       if (strip) {
         gsap.to(strip, {
-          xPercent: -50,
-          ease: 'none',
+          xPercent: -60,
+          ease: 'linear',
           scrollTrigger: {
             trigger: strip,
             start: 'top 80%',
             end: 'bottom 20%',
-            scrub: 1,
+            scrub: 2,
           }
         });
       }
@@ -39,7 +43,7 @@ export default defineComponent({
     initAnimations() {
       const header = this.$refs.header as HTMLElement;
       const feature = this.$refs.feature as HTMLElement;
-      
+
       gsap.from(header, {
         opacity: 0,
         y: 50,
@@ -79,7 +83,7 @@ export default defineComponent({
     <div class="grain-overlay"></div>
 
     <div ref="header" class="header">
-      <h2 class="font-serif italic text-gold">Archives en Mouvement</h2>
+      <h2 class="font-serif italic text-gold">Les vidéos</h2>
       <p class="font-sans subtitle">Des instants figés dans le temps</p>
     </div>
 
@@ -88,18 +92,18 @@ export default defineComponent({
       <div ref="feature" class="main-feature" @click="openCinema">
         <div class="feature-bg">
           <video autoplay muted loop playsinline class="teaser-video">
-            <source src="https://cdn.pixabay.com/video/2019/11/22/29338-374868363_large.mp4" type="video/mp4">
+            <source src="/src/assets/video/pre.mp4" type="video/mp4">
           </video>
           <div class="feature-overlay"></div>
         </div>
-        
+
         <div class="feature-content">
-          <span class="eyebrow">Maintenant à l'Affiche</span>
+          <span class="eyebrow">Maintenant au cinéma</span>
           <h3 class="feature-title font-serif">Le Film de notre Histoire</h3>
           <div class="play-trigger">
             <div class="play-circle">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+                <path d="M8 5V19L19 12L8 5Z" fill="white" />
               </svg>
             </div>
             <span class="play-label">Visionner la vidéo complète</span>
@@ -112,9 +116,8 @@ export default defineComponent({
       <div ref="strip" class="film-strip">
         <div v-for="(video, index) in [...videos, ...videos]" :key="index" class="film-frame">
           <div class="video-container">
-            <video muted loop playsinline @mouseenter="($event.target as HTMLVideoElement).play()" @mouseleave="($event.target as HTMLVideoElement).pause()">
-              <source :src="video.url" type="video/mp4">
-            </video>
+            <img :src="video.url" alt="" @mouseenter="($event.target as HTMLVideoElement).play()"
+              @mouseleave="($event.target as HTMLVideoElement).pause()">
             <div class="frame-overlay">
               <span class="font-serif">{{ video.title }}</span>
             </div>
@@ -136,10 +139,8 @@ export default defineComponent({
               <span class="close-text">FERMER</span>
             </button>
             <div class="video-wrapper">
-              <iframe 
-                :src="cinemaUrl" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              <iframe :src="cinemaUrl" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
               </iframe>
             </div>
@@ -154,7 +155,8 @@ export default defineComponent({
 .video-portal {
   position: relative;
   min-height: 100vh;
-  background-color: #0d0c0a; /* Darker, richer black */
+  background-color: #0d0c0a;
+  /* Darker, richer black */
   color: var(--color-linen);
   padding: 100px 0;
   display: flex;
@@ -164,7 +166,10 @@ export default defineComponent({
 
 .grain-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
   opacity: 0.03;
   pointer-events: none;
@@ -207,7 +212,7 @@ h2 {
   overflow: hidden;
   aspect-ratio: 21/9;
   cursor: pointer;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   transition: transform 0.6s var(--transition-smooth);
 }
 
@@ -235,7 +240,7 @@ h2 {
 .feature-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(13,12,10,0.9) 0%, rgba(13,12,10,0) 60%);
+  background: linear-gradient(0deg, rgba(13, 12, 10, 0.9) 0%, rgba(13, 12, 10, 0) 60%);
 }
 
 .feature-content {
@@ -274,9 +279,9 @@ h2 {
 .play-circle {
   width: 60px;
   height: 60px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -339,27 +344,31 @@ h2 {
 .video-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5; /* Portrait look for variance */
+  aspect-ratio: 4/5;
+  /* Portrait look for variance */
   overflow: hidden;
 }
 
-.film-frame video {
+.film-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(0.8) contrast(1.2) brightness(0.8);
+  filter: contrast(1.2) brightness(0.8);
   transition: all 0.6s ease;
 }
 
-.film-frame:hover video {
-  filter: grayscale(0) contrast(1) brightness(1);
+.film-frame:hover img {
+  filter: contrast(1) brightness(1);
   transform: scale(1.05);
 }
 
 .frame-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
   display: flex;
   align-items: flex-end;
   padding: 20px;
@@ -389,7 +398,7 @@ h2 {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(13,12,10,0.98);
+  background: rgba(13, 12, 10, 0.98);
   backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
@@ -407,7 +416,7 @@ h2 {
   width: 100%;
   height: 100%;
   background: #000;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .video-wrapper iframe {
@@ -428,25 +437,49 @@ h2 {
   cursor: pointer;
 }
 
-.close-icon { font-size: 32px; line-height: 1; }
-.close-text { font-size: 10px; letter-spacing: 4px; opacity: 0.6; }
+.close-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.close-text {
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+}
 
 /* Transitions */
-.cinema-enter-active, .cinema-leave-active {
+.cinema-enter-active,
+.cinema-leave-active {
   transition: opacity 0.6s ease;
 }
-.cinema-enter-from, .cinema-leave-to {
+
+.cinema-enter-from,
+.cinema-leave-to {
   opacity: 0;
 }
 
 @media (max-width: 1024px) {
-  .main-feature { aspect-ratio: 16/9; }
+  .main-feature {
+    aspect-ratio: 16/9;
+  }
 }
 
 @media (max-width: 768px) {
-  .main-feature { aspect-ratio: 1; }
-  .feature-content { padding: 30px; }
-  .film-frame { width: 280px; }
-  .video-portal { padding: 60px 0; }
+  .main-feature {
+    aspect-ratio: 1;
+  }
+
+  .feature-content {
+    padding: 30px;
+  }
+
+  .film-frame {
+    width: 280px;
+  }
+
+  .video-portal {
+    padding: 60px 0;
+  }
 }
 </style>

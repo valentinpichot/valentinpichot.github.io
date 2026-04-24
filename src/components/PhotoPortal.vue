@@ -7,10 +7,10 @@ export default defineComponent({
   data() {
     return {
       images: [
-        { url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80', x: -20, y: -20, scale: 1.2 },
-        { url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80', x: 20, y: -10, scale: 0.8 },
-        { url: 'https://images.unsplash.com/photo-1536756300610-6231d68aaf9c?auto=format&fit=crop&w=800&q=80', x: -10, y: 20, scale: 1.1 },
-        { url: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=80', x: 15, y: 15, scale: 0.9 },
+        { url: 'src/assets/repas2.jpg', x: -20, y: -20, scale: 1.2 },
+        { url: 'src/assets/repas3.jpg', x: 20, y: -10, scale: 0.8 },
+        { url: 'src/assets/repas1.jpg', x: -10, y: 20, scale: 1.1 },
+        { url: 'src/assets/repas4.jpg', x: 15, y: 15, scale: 0.9 },
       ],
     };
   },
@@ -42,7 +42,7 @@ export default defineComponent({
     openGallery() {
       // Morphing effect simulation
       const overlay = this.$refs.morphOverlay as HTMLElement;
-      
+
       gsap.to(overlay, {
         scale: 100,
         opacity: 1,
@@ -61,26 +61,22 @@ export default defineComponent({
 <template>
   <section ref="portal" class="photo-portal">
     <div ref="morphOverlay" class="morph-overlay"></div>
-    
+
     <div class="portal-background">
-      <div v-for="(img, index) in images" 
-           :key="index" 
-           ref="items" 
-           class="floating-img"
-           :style="{ 
-             top: 50 + img.y + '%', 
-             left: 50 + img.x + '%',
-             transform: `scale(${img.scale})` 
-           }">
+      <div v-for="(img, index) in images" :key="index" ref="items" class="floating-img" :style="{
+        top: 50 + img.y + '%',
+        left: 50 + img.x + '%',
+        transform: `scale(${img.scale})`
+      }">
         <img :src="img.url" alt="Mariage Moment">
       </div>
     </div>
 
     <div class="portal-content">
-      <h2 class="font-serif">Le Portail de la Lumière</h2>
+      <h2 class="font-serif">Les photos</h2>
       <p class="font-sans">L'éternité capturée à travers l'objectif.</p>
       <button class="portal-btn" @click="openGallery">
-        Revivre chaque instant (Galerie HD)
+        Cliquez ici pour toutes les photos
       </button>
     </div>
   </section>
@@ -112,7 +108,7 @@ export default defineComponent({
   width: 300px;
   height: 400px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   border: 10px solid white;
 }
 
@@ -179,7 +175,13 @@ p {
 }
 
 @media (max-width: 768px) {
-  h2 { font-size: 2.5rem; }
-  .floating-img { width: 150px; height: 200px; }
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .floating-img {
+    width: 150px;
+    height: 200px;
+  }
 }
 </style>
