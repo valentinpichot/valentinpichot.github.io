@@ -38,7 +38,7 @@ export default defineComponent({
 <template>
   <section class="thank-you-container">
     <div ref="bg" class="thank-you-bg">
-      <img src="../assets/last3.jpg" alt="Merci">
+      <img src="/assets/last3.jpg" alt="Merci">
       <div class="overlay"></div>
     </div>
     

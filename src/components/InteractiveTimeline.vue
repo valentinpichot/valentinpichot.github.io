@@ -15,8 +15,8 @@ export default defineComponent({
           desc: 'Une promesse pour l’éternité.',
           icon: '💍',
           media: [
-            { type: 'image', url: 'src/assets/bague1.jpg' },
-            { type: 'image', url: 'src/assets/bague2.jpg' }
+            { type: 'image', url: '/assets/bague1.jpg' },
+            { type: 'image', url: '/assets/bague2.jpg' }
           ]
         },
         {
@@ -24,28 +24,28 @@ export default defineComponent({
           title: 'Arrivée au chateau',
           desc: 'La Auby et son Valou qui se baladent.',
           icon: '🥂',
-          media: [{ type: 'video', url: 'src/assets/video/balade.mp4' }]
+          media: [{ type: 'video', url: '/assets/video/balade.mp4' }]
         },
         {
           time: '13:00',
           title: 'L\'apéro',
           desc: 'C\'est le moment de trinquer.',
           icon: '💐',
-          media: [{ type: 'image', url: 'src/assets/apero1.jpg' }]
+          media: [{ type: 'image', url: '/assets/apero1.jpg' }]
         },
         {
           time: '14:00',
           title: 'Le repas',
           desc: 'C\'est le moment de passer à table.',
           icon: '✨',
-          media: [{ type: 'image', url: 'src/assets/repas6.jpg' }]
+          media: [{ type: 'image', url: '/assets/repas6.jpg' }]
         },
         {
           time: 'Les familles',
           title: 'Merci',
           desc: 'Merci à tous d\'avoir participé à notre bonheur.',
           icon: '💖',
-          media: [{ type: 'image', url: 'src/assets/fin1.jpg' }]
+          media: [{ type: 'image', url: '/assets/fin1.jpg' }]
         },
       ]
     };
@@ -138,7 +138,7 @@ export default defineComponent({
 <template>
   <section class="timeline-container section-padding">
     <div class="background-parallax">
-      <img src="../assets/inter-bg2.jpg" ref="bgImage" class="bg-image" alt="">
+      <img src="/assets/inter-bg2.jpg" ref="bgImage" class="bg-image" alt="">
       <div class="bg-overlay"></div>
     </div>
 

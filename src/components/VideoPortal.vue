@@ -9,14 +9,14 @@ export default defineComponent({
       isCinemaOpen: false,
       cinemaUrl: 'https://www.youtube.com/embed/x5AXm0apTjA?autoplay=1&rel=0&modestbranding=1',
       videos: [
-        { title: `L'arrivée en voiture`, url: 'src/assets/voiture1.jpg' },
-        { title: 'La descente', url: 'src/assets/arrivee2.jpg' },
-        { title: 'La montée des marches', url: 'src/assets/val1.jpg' },
-        { title: `L'arrivée à la mairie`, url: 'src/assets/auby1.jpg' },
-        { title: 'Les sourires', url: 'src/assets/mairie3.jpg' },
-        { title: 'Les bagues', url: 'src/assets/bague2.jpg' },
-        { title: 'Auby et Valou', url: 'src/assets/mairie2.jpg' },
-        { title: 'Les mariés au chateau', url: 'src/assets/marche1.jpg' },
+        { title: `L'arrivée en voiture`, url: '/assets/voiture1.jpg' },
+        { title: 'La descente', url: '/assets/arrivee2.jpg' },
+        { title: 'La montée des marches', url: '/assets/val1.jpg' },
+        { title: `L'arrivée à la mairie`, url: '/assets/auby1.jpg' },
+        { title: 'Les sourires', url: '/assets/mairie3.jpg' },
+        { title: 'Les bagues', url: '/assets/bague2.jpg' },
+        { title: 'Auby et Valou', url: '/assets/mairie2.jpg' },
+        { title: 'Les mariés au chateau', url: '/assets/marche1.jpg' },
       ]
     };
   },
@@ -92,7 +92,7 @@ export default defineComponent({
       <div ref="feature" class="main-feature" @click="openCinema">
         <div class="feature-bg">
           <video autoplay muted loop playsinline class="teaser-video">
-            <source src="/src/assets/video/pre.mp4" type="video/mp4">
+            <source src="/assets/video/pre.mp4" type="video/mp4">
           </video>
           <div class="feature-overlay"></div>
         </div>

@@ -7,10 +7,10 @@ export default defineComponent({
   data() {
     return {
       images: [
-        { url: 'src/assets/repas2.jpg', x: -20, y: -20, scale: 1.2 },
-        { url: 'src/assets/repas3.jpg', x: 20, y: -10, scale: 0.8 },
-        { url: 'src/assets/repas1.jpg', x: -10, y: 20, scale: 1.1 },
-        { url: 'src/assets/repas4.jpg', x: 15, y: 15, scale: 0.9 },
+        { url: '/assets/repas2.jpg', x: -20, y: -20, scale: 1.2 },
+        { url: '/assets/repas3.jpg', x: 20, y: -10, scale: 0.8 },
+        { url: '/assets/repas1.jpg', x: -10, y: 20, scale: 1.1 },
+        { url: '/assets/repas4.jpg', x: 15, y: 15, scale: 0.9 },
       ],
     };
   },

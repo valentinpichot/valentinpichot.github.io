@@ -80,7 +80,7 @@ export default defineComponent({
     <div class="video-background">
       <div class="video-overlay"></div>
       <video ref="video" autoplay muted loop playsinline class="bg-video">
-        <source src="/src/assets/video/face1.mp4" type="video/mp4">
+        <source src="/assets/video/face1.mp4" type="video/mp4">
       </video>
     </div>
 
