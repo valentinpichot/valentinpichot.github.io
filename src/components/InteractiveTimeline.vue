@@ -2,21 +2,28 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
+import bgSrc from '@/assets/chateau10.jpg';
+import videoBague from '@/assets/video/video-bague.mp4';
+import videoBalade from '@/assets/video/balade.mp4';
+import imgApero from '@/assets/apero1.jpg';
+import imgRepas from '@/assets/repas6.jpg';
+import imgFin from '@/assets/fin1.jpg';
+
 export default defineComponent({
   name: 'InteractiveTimeline',
   data() {
     return {
+      bgSrc,
       activeMediaIndices: {} as Record<number, number>,
       autoplayIntervals: {} as Record<number, any>,
       events: [
         {
           time: '10H59',
           title: 'Le Oui',
-          desc: 'Une promesse pour l’éternité.',
+          desc: 'Une promesse pour l\'éternité.',
           icon: '💍',
           media: [
-            { type: 'image', url: '/assets/bague1.jpg' },
-            { type: 'image', url: '/assets/bague2.jpg' }
+            { type: 'video', url: videoBague },
           ]
         },
         {
@@ -24,28 +31,28 @@ export default defineComponent({
           title: 'Arrivée au chateau',
           desc: 'La Auby et son Valou qui se baladent.',
           icon: '🥂',
-          media: [{ type: 'video', url: '/assets/video/balade.mp4' }]
+          media: [{ type: 'video', url: videoBalade }]
         },
         {
           time: '13:00',
           title: 'L\'apéro',
           desc: 'C\'est le moment de trinquer.',
           icon: '💐',
-          media: [{ type: 'image', url: '/assets/apero1.jpg' }]
+          media: [{ type: 'image', url: imgApero }]
         },
         {
           time: '14:00',
           title: 'Le repas',
           desc: 'C\'est le moment de passer à table.',
           icon: '✨',
-          media: [{ type: 'image', url: '/assets/repas6.jpg' }]
+          media: [{ type: 'image', url: imgRepas }]
         },
         {
           time: 'Les familles',
           title: 'Merci',
           desc: 'Merci à tous d\'avoir participé à notre bonheur.',
           icon: '💖',
-          media: [{ type: 'image', url: '/assets/fin1.jpg' }]
+          media: [{ type: 'image', url: imgFin }]
         },
       ]
     };
@@ -69,8 +76,12 @@ export default defineComponent({
       const bgImage = this.$refs.bgImage as HTMLElement;
 
       if (bgImage) {
-        gsap.to(bgImage, {
-          yPercent: 30,
+        gsap.fromTo(bgImage, {
+          yPercent: -15,
+          scale: 1.5,
+        }, {
+          yPercent: 20,
+          scale: 1,
           ease: 'none',
           scrollTrigger: {
             trigger: '.timeline-container',
@@ -138,7 +149,7 @@ export default defineComponent({
 <template>
   <section class="timeline-container section-padding">
     <div class="background-parallax">
-      <img src="/assets/inter-bg2.jpg" ref="bgImage" class="bg-image" alt="">
+      <img :src="bgSrc" ref="bgImage" class="bg-image" alt="">
       <div class="bg-overlay"></div>
     </div>
 
@@ -220,20 +231,16 @@ export default defineComponent({
   width: 100%;
   height: 130%;
   object-fit: cover;
-  filter: blur(4px) brightness(0.9);
   position: absolute;
   top: -15%;
   left: 0;
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-      rgba(234, 231, 223, 0.95) 0%,
-      rgba(234, 231, 223, 0.7) 30%,
-      rgba(234, 231, 223, 0.7) 70%,
-      rgba(234, 231, 223, 0.95) 100%);
 }
 
 .timeline-title {
