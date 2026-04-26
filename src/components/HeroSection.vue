@@ -248,38 +248,6 @@ export default defineComponent({
   width: 30px;
   height: 44px;
   border: 1.5px solid var(--color-dusty-rose);
-  border-radius: 10px;
-  position: relative;
-}
-
-.wheel {
-  width: 2px;
-  height: 6px;
-  background-color: var(--color-dusty-rose);
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scrollWheel 2s infinite ease-in-out;
-}
-
-.arrows {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.mouse-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.mouse {
-  width: 30px;
-  height: 44px;
-  border: 1.5px solid var(--color-dusty-rose);
   border-radius: 16px;
   position: relative;
 }
@@ -295,10 +263,11 @@ export default defineComponent({
   animation: scrollWheel 2s infinite ease-in-out;
 }
 
-.arrows {
+.mouse-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 
 .arrow-down {
@@ -323,28 +292,6 @@ export default defineComponent({
   opacity: 0.7;
   font-weight: 500;
   color: var(--color-espresso);
-}
-
-@keyframes scrollLine {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-
-  50% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-
-  51% {
-    transform: scaleY(1);
-    transform-origin: bottom;
-  }
-
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
 }
 
 @keyframes scrollLine {
