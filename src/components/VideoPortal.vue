@@ -2,21 +2,32 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
+import imgVoiture from '@/assets/voiture1.jpg';
+import imgArrivee2 from '@/assets/arrivee2.jpg';
+import imgVal1 from '@/assets/val1.jpg';
+import imgAuby1 from '@/assets/auby1.jpg';
+import imgMairie3 from '@/assets/mairie3.jpg';
+import imgBague2 from '@/assets/bague2.jpg';
+import imgMairie2 from '@/assets/mairie2.jpg';
+import imgMarche1 from '@/assets/marche1.jpg';
+import videoPre from '@/assets/video/pre.mp4';
+
 export default defineComponent({
   name: 'VideoPortal',
   data() {
     return {
       isCinemaOpen: false,
       cinemaUrl: 'https://www.youtube.com/embed/x5AXm0apTjA?autoplay=1&rel=0&modestbranding=1',
+      videoPre,
       videos: [
-        { title: `L'arrivée en voiture`, url: '/assets/voiture1.jpg' },
-        { title: 'La descente', url: '/assets/arrivee2.jpg' },
-        { title: 'La montée des marches', url: '/assets/val1.jpg' },
-        { title: `L'arrivée à la mairie`, url: '/assets/auby1.jpg' },
-        { title: 'Les sourires', url: '/assets/mairie3.jpg' },
-        { title: 'Les bagues', url: '/assets/bague2.jpg' },
-        { title: 'Auby et Valou', url: '/assets/mairie2.jpg' },
-        { title: 'Les mariés au chateau', url: '/assets/marche1.jpg' },
+        { title: `L'arrivée en voiture`, url: imgVoiture },
+        { title: 'La descente', url: imgArrivee2 },
+        { title: 'La montée des marches', url: imgVal1 },
+        { title: `L'arrivée à la mairie`, url: imgAuby1 },
+        { title: 'Les sourires', url: imgMairie3 },
+        { title: 'Les bagues', url: imgBague2 },
+        { title: 'Auby et Valou', url: imgMairie2 },
+        { title: 'Les mariés au château', url: imgMarche1 },
       ]
     };
   },
@@ -92,7 +103,7 @@ export default defineComponent({
       <div ref="feature" class="main-feature" @click="openCinema">
         <div class="feature-bg">
           <video autoplay muted loop playsinline class="teaser-video">
-            <source src="/assets/video/pre.mp4" type="video/mp4">
+            <source :src="videoPre" type="video/mp4">
           </video>
           <div class="feature-overlay"></div>
         </div>

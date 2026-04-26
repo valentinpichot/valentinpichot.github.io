@@ -2,6 +2,9 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
+const GALLERY_CODE = 'oZS0yTBr';
+const GALLERY_URL  = 'https://clarissephotographe.pixieset.com/aubeandvalentin/';
+
 export default defineComponent({
   name: 'PhotoPortal',
   data() {
@@ -12,6 +15,7 @@ export default defineComponent({
         { url: '/assets/repas1.jpg', x: -10, y: 20, scale: 1.1 },
         { url: '/assets/repas4.jpg', x: 15, y: 15, scale: 0.9 },
       ],
+      toastVisible: false,
     };
   },
   mounted() {
@@ -39,21 +43,35 @@ export default defineComponent({
         });
       }
     },
-    openGallery() {
-      // Morphing effect simulation
-      const overlay = this.$refs.morphOverlay as HTMLElement;
+    async openGallery() {
+      // Copy access code to clipboard silently
+      try {
+        await navigator.clipboard.writeText(GALLERY_CODE);
+      } catch {
+        // fallback
+      }
 
-      gsap.to(overlay, {
-        scale: 100,
-        opacity: 1,
-        duration: 1.5,
-        ease: 'power4.inOut',
-        onComplete: () => {
-          window.open('https://drive.google.com', '_blank');
-          gsap.set(overlay, { scale: 0, opacity: 0 });
-        }
-      });
-    }
+      // Show toast
+      this.toastVisible = true;
+
+      // After 1.8s, hide toast and launch morph animation
+      setTimeout(() => {
+        this.toastVisible = false;
+        const overlay = this.$refs.morphOverlay as HTMLElement;
+        gsap.to(overlay, {
+          scale: 100,
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power4.inOut',
+          onComplete: () => {
+            // Attempt to pass password in URL + copy fallback
+            const urlWithPass = `${GALLERY_URL}?password=${GALLERY_CODE}`;
+            window.open(urlWithPass, '_blank');
+            gsap.set(overlay, { scale: 0, opacity: 0 });
+          }
+        });
+      }, 1800);
+    },
   }
 });
 </script>
@@ -78,7 +96,16 @@ export default defineComponent({
       <button class="portal-btn" @click="openGallery">
         Cliquez ici pour toutes les photos
       </button>
+      <p class="cta-hint font-sans">(Le code d'accès sera automatiquement copié)</p>
     </div>
+
+    <!-- Clipboard toast -->
+    <Transition name="toast">
+      <div v-if="toastVisible" class="clipboard-toast font-sans">
+        <span class="toast-icon">📋</span>
+        Code copié · collez-le sur la page suivante
+      </div>
+    </Transition>
   </section>
 </template>
 
@@ -160,6 +187,13 @@ p {
   transform: translateY(-5px);
 }
 
+.cta-hint {
+  margin-top: 15px;
+  font-size: 0.8rem !important;
+  opacity: 0.4 !important;
+  letter-spacing: 1px;
+}
+
 .morph-overlay {
   position: absolute;
   top: 50%;
@@ -174,14 +208,38 @@ p {
   opacity: 0;
 }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 2.5rem;
-  }
+/* ── Toast ── */
+.clipboard-toast {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background: var(--color-espresso);
+  color: var(--color-linen);
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
 
-  .floating-img {
-    width: 150px;
-    height: 200px;
-  }
+.toast-icon {
+  font-size: 1.1rem;
+}
+
+.toast-enter-active { transition: opacity 0.35s ease, transform 0.35s ease; }
+.toast-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
+.toast-enter-from   { opacity: 0; transform: translateX(-50%) translateY(16px); }
+.toast-leave-to     { opacity: 0; transform: translateX(-50%) translateY(16px); }
+
+@media (max-width: 768px) {
+  h2 { font-size: 2.5rem; }
+  .floating-img { width: 150px; height: 200px; }
+  .clipboard-toast { font-size: 0.8rem; padding: 12px 20px; }
 }
 </style>
