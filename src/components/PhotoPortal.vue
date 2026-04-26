@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
 const GALLERY_CODE = 'oZS0yTBr';
-const GALLERY_URL  = 'https://clarissephotographe.pixieset.com/aubeandvalentin/';
+const GALLERY_URL = 'https://clarissephotographe.pixieset.com/aubeandvalentin/';
 
 export default defineComponent({
   name: 'PhotoPortal',
@@ -94,7 +94,7 @@ export default defineComponent({
       <h2 class="font-serif">Les photos</h2>
       <p class="font-sans">L'éternité capturée à travers l'objectif.</p>
       <button class="portal-btn" @click="openGallery">
-        Cliquez ici pour toutes les photos
+        Cliquer ici pour toutes les photos
       </button>
       <p class="cta-hint font-sans">(Le code d'accès sera automatiquement copié)</p>
     </div>
@@ -112,7 +112,7 @@ export default defineComponent({
 <style scoped>
 .photo-portal {
   position: relative;
-  height: 80vh;
+  height: 90vh;
   width: 100%;
   background-color: var(--color-linen);
   display: flex;
@@ -232,14 +232,37 @@ p {
   font-size: 1.1rem;
 }
 
-.toast-enter-active { transition: opacity 0.35s ease, transform 0.35s ease; }
-.toast-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
-.toast-enter-from   { opacity: 0; transform: translateX(-50%) translateY(16px); }
-.toast-leave-to     { opacity: 0; transform: translateX(-50%) translateY(16px); }
+.toast-enter-active {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.toast-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+}
 
 @media (max-width: 768px) {
-  h2 { font-size: 2.5rem; }
-  .floating-img { width: 150px; height: 200px; }
-  .clipboard-toast { font-size: 0.8rem; padding: 12px 20px; }
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .floating-img {
+    width: 150px;
+    height: 200px;
+  }
+
+  .clipboard-toast {
+    font-size: 0.8rem;
+    padding: 12px 20px;
+  }
 }
 </style>

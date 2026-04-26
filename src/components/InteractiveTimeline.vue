@@ -29,7 +29,7 @@ export default defineComponent({
         {
           time: '12:30',
           title: 'Arrivée au chateau',
-          desc: 'La Auby et son Valou qui se baladent.',
+          desc: 'Auby et Valou qui se baladent.',
           icon: '🥂',
           media: [{ type: 'video', url: videoBalade }]
         },
@@ -43,12 +43,12 @@ export default defineComponent({
         {
           time: '14:00',
           title: 'Le repas',
-          desc: 'C\'est le moment de passer à table.',
+          desc: 'Délicieux déjeuner au château.',
           icon: '✨',
           media: [{ type: 'image', url: imgRepas }]
         },
         {
-          time: 'Les familles',
+          time: '18:00',
           title: 'Merci',
           desc: 'Merci à tous d\'avoir participé à notre bonheur.',
           icon: '💖',

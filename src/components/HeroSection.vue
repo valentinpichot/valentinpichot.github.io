@@ -96,7 +96,7 @@ export default defineComponent({
       <p class="hero-subtitle">11 Avril 2026</p>
       <div class="center-indicator">
         <div class="center-line"></div>
-        <span class="scroll-text-center">DÉROULEZ POUR DÉCOUVRIR</span>
+        <span class="scroll-text-center">DÉROULER POUR DÉCOUVRIR</span>
       </div>
     </div>
 
@@ -277,10 +277,10 @@ export default defineComponent({
 }
 
 .mouse {
-  width: 18px;
-  height: 30px;
+  width: 30px;
+  height: 44px;
   border: 1.5px solid var(--color-dusty-rose);
-  border-radius: 10px;
+  border-radius: 16px;
   position: relative;
 }
 

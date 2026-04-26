@@ -90,7 +90,8 @@ export default defineComponent({
       <section class="footer-spacer section-padding">
         <div class="container">
           <p class="font-serif" style="text-align: center; opacity: 0.5;">Fait avec amour pour un jour inoubliable.</p>
-          <p class="font-serif" style="text-align: center; opacity: 0.5;">A suivre...</p>
+          <p class="font-serif" style="text-align: center; opacity: 0.5;">Les nouveaux mariés, Aube et Valentin</p>
+          <p class="font-serif" style="text-align: center; opacity: 0.5;">Bandin Pichot</p>
           <a href=""></a>
         </div>
       </section>
