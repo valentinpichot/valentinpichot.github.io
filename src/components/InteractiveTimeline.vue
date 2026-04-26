@@ -2,12 +2,12 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
-import bgSrc from '@/assets/chateau10.jpg';
+import bgSrc from '@/assets/chateau10.webp';
 import videoBague from '@/assets/video/video-bague.mp4';
 import videoBalade from '@/assets/video/balade.mp4';
-import imgApero from '@/assets/apero1.jpg';
-import imgRepas from '@/assets/repas6.jpg';
-import imgFin from '@/assets/fin1.jpg';
+import imgApero from '@/assets/apero1.webp';
+import imgRepas from '@/assets/repas6.webp';
+import imgFin from '@/assets/fin1.webp';
 
 export default defineComponent({
   name: 'InteractiveTimeline',

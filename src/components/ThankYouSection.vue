@@ -2,8 +2,15 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
+import imgMerci from '@/assets/last3.webp';
+
 export default defineComponent({
   name: 'ThankYouSection',
+  data() {
+    return {
+      imgMerci,
+    };
+  },
   mounted() {
     this.initAnimation();
   },
@@ -38,7 +45,7 @@ export default defineComponent({
 <template>
   <section class="thank-you-container">
     <div ref="bg" class="thank-you-bg">
-      <img src="/assets/last3.jpg" alt="Merci">
+      <img :src="imgMerci" alt="Merci">
       <div class="overlay"></div>
     </div>
     

@@ -2,14 +2,14 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
-import imgVoiture from '@/assets/voiture1.jpg';
-import imgArrivee2 from '@/assets/arrivee2.jpg';
-import imgVal1 from '@/assets/val1.jpg';
-import imgAuby1 from '@/assets/auby1.jpg';
-import imgMairie3 from '@/assets/mairie3.jpg';
-import imgBague2 from '@/assets/bague2.jpg';
-import imgMairie2 from '@/assets/mairie2.jpg';
-import imgMarche1 from '@/assets/marche1.jpg';
+import imgVoiture from '@/assets/voiture1.webp';
+import imgArrivee2 from '@/assets/arrivee2.webp';
+import imgVal1 from '@/assets/val1.webp';
+import imgAuby1 from '@/assets/auby1.webp';
+import imgMairie3 from '@/assets/mairie3.webp';
+import imgBague2 from '@/assets/bague2.webp';
+import imgMairie2 from '@/assets/mairie2.webp';
+import imgMarche1 from '@/assets/marche1.webp';
 import videoPre from '@/assets/video/pre.mp4';
 
 export default defineComponent({
@@ -181,7 +181,7 @@ export default defineComponent({
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.webp');
   opacity: 0.03;
   pointer-events: none;
   z-index: 5;

@@ -11,6 +11,8 @@ import VideoPortal from './components/VideoPortal.vue';
 import InteractiveTimeline from './components/InteractiveTimeline.vue';
 import ThankYouSection from './components/ThankYouSection.vue';
 
+import weddingFavicon from '@/assets/wedding.webp';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default defineComponent({
@@ -31,6 +33,7 @@ export default defineComponent({
   mounted() {
     this.initLenis();
     this.initScrollTriggerSync();
+    this.setFavicon();
   },
   beforeUnmount() {
     if (this.lenis) {
@@ -38,6 +41,13 @@ export default defineComponent({
     }
   },
   methods: {
+    setFavicon() {
+      const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement || document.createElement('link');
+      link.type = 'image/webp';
+      link.rel = 'icon';
+      link.href = weddingFavicon;
+      document.getElementsByTagName('head')[0].appendChild(link);
+    },
     initLenis() {
       this.lenis = new Lenis({
         duration: 1.3, // Dream-like slower feel

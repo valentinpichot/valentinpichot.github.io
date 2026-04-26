@@ -2,8 +2,15 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 
+import videoHero from '@/assets/video/face1.mp4';
+
 export default defineComponent({
   name: 'HeroSection',
+  data() {
+    return {
+      videoHero,
+    };
+  },
   mounted() {
     this.initAppearAnimation();
     this.initHeroAnimation();
@@ -80,7 +87,7 @@ export default defineComponent({
     <div class="video-background">
       <div class="video-overlay"></div>
       <video ref="video" autoplay muted loop playsinline class="bg-video">
-        <source src="/assets/video/face1.mp4" type="video/mp4">
+        <source :src="videoHero" type="video/mp4">
       </video>
     </div>
 

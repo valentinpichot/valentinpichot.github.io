@@ -5,15 +5,20 @@ import gsap from 'gsap';
 const GALLERY_CODE = 'oZS0yTBr';
 const GALLERY_URL = 'https://clarissephotographe.pixieset.com/aubeandvalentin/';
 
+import imgRepas1 from '@/assets/repas1.webp';
+import imgRepas2 from '@/assets/repas2.webp';
+import imgRepas3 from '@/assets/repas3.webp';
+import imgRepas4 from '@/assets/repas4.webp';
+
 export default defineComponent({
   name: 'PhotoPortal',
   data() {
     return {
       images: [
-        { url: '/assets/repas2.jpg', x: -20, y: -20, scale: 1.2 },
-        { url: '/assets/repas3.jpg', x: 20, y: -10, scale: 0.8 },
-        { url: '/assets/repas1.jpg', x: -10, y: 20, scale: 1.1 },
-        { url: '/assets/repas4.jpg', x: 15, y: 15, scale: 0.9 },
+        { url: imgRepas2, x: -20, y: -20, scale: 1.2 },
+        { url: imgRepas3, x: 20, y: -10, scale: 0.8 },
+        { url: imgRepas1, x: -10, y: 20, scale: 1.1 },
+        { url: imgRepas4, x: 15, y: 15, scale: 0.9 },
       ],
       toastVisible: false,
     };
